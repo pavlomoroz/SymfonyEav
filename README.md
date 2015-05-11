@@ -20,3 +20,14 @@ routing
     enviroment_eav:
         resource: "@EnviromentEavBundle/Resources/config/routing.yml"
         prefix:   /attribute
+        
+
+FormType
+
+    ->add('attributes', 'attributeCollection', array(
+                'type' => new AttributeType()
+            ))
+            
+Kernel 
+    
+    new Enviroment\EavBundle\EnviromentEavBundle(),
