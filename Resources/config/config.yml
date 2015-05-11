@@ -1,0 +1,4 @@
+twig:
+    form:
+        resources:
+            - 'EnviromentEavBundle:Form:attributeCollection.html.twig'

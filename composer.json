@@ -1,0 +1,29 @@
+{
+  "name" : "enviroment/eavbundle",
+  "description" : "Symfony2 Eav Bundle",
+  "version" : "0.0.1",
+  "type" : "symfony-bundle",
+  "homepage": "https://github.com/pavlomoroz/SymfonyEav",
+  "license" : "MIT",
+  "keywords" : ["page", "page bundle"],
+  "authors" : [{
+    "name" : "Pavlo Moroz",
+    "email" : "pmoroz@malkosua.com"
+  }],
+  "require" : {
+    "php": ">=5.4",
+    "symfony/symfony": ">=2.6",
+    "jms/di-extra-bundle": ">=1.5"
+  },
+  "suggest": {
+
+  },
+  "autoload" : {
+    "psr-4" : { "Enviroment\\EavBundle\\" : "" }
+  },
+  "extra" : {
+    "branch-alias" : {
+      "dev-master" : "1.0.x-dev"
+    }
+  }
+}

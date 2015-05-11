@@ -1,0 +1,21 @@
+enviroment_eav_homepage:
+    path:     /definition
+    defaults: { _controller: EnviromentEavBundle:Definition:index }
+
+
+enviroment_eav_definition_new:
+    path:     /definition/new
+    defaults: { _controller: EnviromentEavBundle:Definition:new }
+
+enviroment_eav_definition_edit:
+    path:     /definition/{id}/edit
+    defaults: { _controller: EnviromentEavBundle:Definition:edit }
+
+enviroment_eav_definition_delete:
+    path:     /definition/{id}/delete
+    defaults: { _controller: EnviromentEavBundle:Definition:delete }
+
+
+enviroment_eav_option_edit:
+    path:     /definition/{id}/option/edit
+    defaults: { _controller: EnviromentEavBundle:Option:edit }

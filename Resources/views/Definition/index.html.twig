@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.type }}</td>
+                <td>
+                    <a href="{{ path('enviroment_eav_definition_edit', { 'id': entity.id }) }}">
+                        Edit
+                    </a>
+                    <a href="{{ path('enviroment_eav_definition_delete', { 'id': entity.id }) }}">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('enviroment_eav_definition_new') }}">Create new</a>
+{% endblock %}

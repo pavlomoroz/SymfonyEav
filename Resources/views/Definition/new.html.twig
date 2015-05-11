@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <form method="POST" action="{{ path('enviroment_eav_definition_new') }}">
+        {{ form_rest(form) }}
+
+        <div class="form-actions">
+            <button class="btn btn-primary" role="submit">{% trans %}Save{% endtrans %}</button>
+            <a class="btn btn-success" href="#" onclick="Definition.addOption(); return false;">
+                {% trans %}Add new item{% endtrans %}
+            </a>
+            <a class="btn btn-default-outline" href="{{ path('enviroment_eav_homepage') }}">Back to the list</a>
+        </div>
+
+        <script>
+            $( document ).ready(function() {
+                Definition = {
+                    addOption: function() {
+                        var prototype = $('#definition_options').data('prototype');
+                        var newItem = prototype.replace(/_name/g, $('#definition_options').children().length);
+                        newItem = $(newItem).append('<a onclick="Definition.removeOption(this); return false;" href="#">Remove</a>');
+                        $('#definition_options').append(newItem);
+                    },
+
+                    removeOption: function(el) {
+                        $(el).parent().remove()
+                    }
+                }
+
+                $.each($('#definition_options').children(), function (key, value) {
+                    $(value).append('<a onclick="Definition.removeOption(this); return false;" href="#">Remove</a>');
+                });
+            });
+
+        </script>
+    </form>
+
+{% endblock %}

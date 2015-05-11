@@ -1,4 +1,4 @@
-#Eav Bundle
+#Installation
 
 ##1, Require
 
