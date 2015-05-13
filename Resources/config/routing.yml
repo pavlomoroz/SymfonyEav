@@ -1,21 +1,28 @@
 enviroment_eav_homepage:
-    path:     /definition
-    defaults: { _controller: EnviromentEavBundle:Definition:index }
+    path:     /
+    defaults: { _controller: "EnviromentEavBundle:Schema:index" }
 
+enviroment_eav_new:
+    path:     /new/{id}
+    defaults: { _controller: "EnviromentEavBundle:Schema:new" }
+    options:
+        expose: true
 
-enviroment_eav_definition_new:
-    path:     /definition/new
-    defaults: { _controller: EnviromentEavBundle:Definition:new }
+enviroment_eav_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "EnviromentEavBundle:Schema:edit" }
+    options:
+        expose: true
 
-enviroment_eav_definition_edit:
-    path:     /definition/{id}/edit
-    defaults: { _controller: EnviromentEavBundle:Definition:edit }
+enviroment_eav_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "EnviromentEavBundle:Schema:delete" }
+    methods:  [POST, DELETE, GET]
+    options:
+        expose: true
 
-enviroment_eav_definition_delete:
-    path:     /definition/{id}/delete
-    defaults: { _controller: EnviromentEavBundle:Definition:delete }
-
-
-enviroment_eav_option_edit:
-    path:     /definition/{id}/option/edit
-    defaults: { _controller: EnviromentEavBundle:Option:edit }
+enviroment_eav_difinitions:
+    path:     /difinitions/{id}
+    defaults: { _controller: "EnviromentEavBundle:Schema:difinitions" }
+    options:
+        expose: true

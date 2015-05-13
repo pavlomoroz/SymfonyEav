@@ -1,0 +1,92 @@
+{% extends 'EnviromentEavBundle::base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.type) }}
+
+    {{ form_label(form.options) }}
+
+    <ul id="options" data-prototype="{{ form_widget(form.options.vars.prototype)|e }}">
+        {% for option in form.options %}
+            <li class="option">{{ form_row(option.name) }}</li>
+        {% endfor %}
+    </ul>
+
+    {{ form_row(form.required) }}
+    {{ form_row(form._token) }}
+
+    <div class="form-actions">
+        <button class="btn btn-primary" role="submit"><i class="fa fa-arrow-down"></i>{% trans %}Save{% endtrans %}</button>
+        <a class="btn btn-default-outline" href="{{ path('enviroment_eav_homepage') }}">Back to the list</a>
+    </div>
+    {{ form_end(form, {'render_rest': false}) }}
+
+    <script>
+        jQuery(document).ready(function() {
+            // setup an "add a option" link
+            var $addOptionLink = $('<a class="btn btn-success add-option-btn" href="#"><i class="fa fa-plus"></i>Add new option</a>');
+            var $newLinkLi  = $('<div class="form-actions"></div>').append($addOptionLink);
+
+
+            // Get the ul that holds the collection of options
+            var $collectionHolder = $('#options');
+
+            // add a delete link to all of the existing option form li elements
+            $collectionHolder.find('.option').each(function() {
+                addOptionFormDeleteLink($(this));
+            });
+
+            // add the "add a option" anchor and li to the options ul
+            $collectionHolder.append($newLinkLi);
+
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+            $addOptionLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new option form (see next code block)
+                addOptionForm($collectionHolder, $newLinkLi);
+            });
+
+
+            function addOptionForm($collectionHolder, $newLinkLi) {
+                // Get the data-prototype explained earlier
+                var prototype = $collectionHolder.data('prototype');
+
+                // get the new index
+                var index = $collectionHolder.data('index');
+
+                // Replace '$$name$$' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                var newForm = prototype.replace(/__name__/g, index);
+
+                // increase the index with one for the next item
+                $collectionHolder.data('index', index + 1);
+
+                // Display the form in the page in an li, before the "Add a option" link li
+                var $newFormLi = $('<li></li>').append(newForm);
+                $newLinkLi.before($newFormLi);
+
+                // add a delete link to the new form
+                addOptionFormDeleteLink($newFormLi);
+            }
+
+            function addOptionFormDeleteLink($optionFormLi) {
+                var $removeFormA = $('<a class="btn btn-danger delete" href="#"><i class="fa fa-trash-o"></i><span>Delete option</span></a>');
+                $optionFormLi.append($removeFormA);
+
+                $removeFormA.on('click', function(e) {
+                    // prevent the link from creating a "#" on the URL
+                    e.preventDefault();
+
+                    // remove the li for the option form
+                    $optionFormLi.remove();
+                });
+            }
+        });
+    </script>
+{% endblock %}
