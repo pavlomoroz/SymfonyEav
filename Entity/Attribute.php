@@ -54,10 +54,7 @@ class Attribute
      */
     public function setValue($value)
     {
-        if ($value && is_array($value)) {
-            $value = reset($value);
-        }
-        $this->value = $value;
+        $this->value = serialize($value);
 
         return $this;
     }
@@ -69,7 +66,7 @@ class Attribute
      */
     public function getValue()
     {
-        return $this->value;
+        return unserialize($this->value);
     }
 
     /**
