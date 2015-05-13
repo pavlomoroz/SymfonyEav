@@ -1,7 +1,7 @@
 {
   "name" : "enviroment/eavbundle",
   "description" : "Symfony2 Eav Bundle",
-  "version" : "0.0.1",
+  "version" : "0.0.2",
   "type" : "symfony-bundle",
   "homepage": "https://github.com/pavlomoroz/SymfonyEav",
   "license" : "MIT",
