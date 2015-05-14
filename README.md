@@ -31,3 +31,18 @@ FormType
 Kernel 
     
     new Enviroment\EavBundle\EnviromentEavBundle(),
+    
+Your entity
+
+    use Enviroment\EavBundle\Annotation as EAV;
+    use Enviroment\EavBundle\Entity\AttributedEntityTrait;
+    
+    /**
+     * Entity
+     * @EAV\Entity()
+     ...
+     */
+    class Entity 
+    {
+        use AttributedEntityTrait;
+    }
